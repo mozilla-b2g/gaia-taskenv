@@ -1,0 +1,31 @@
+#! /bin/bash -e
+
+# $1 == repo url
+# $2 == repo revision
+
+task="run_task.sh"
+
+
+# git url (https://github.com/...)
+repo=$1
+# revision (like master)
+rev=$2
+repo_dir='git_checkout';
+# command to run in repo... this must be one (and only one argv option right now)
+cmd=$3
+
+# mostly so we can re-run tasks manually
+rm -f $task
+rm -Rf $repo_dir;
+
+echo "#! /bin/bash -ve" >> $task
+echo "git clone $repo $repo_dir" >> $task
+echo "cd $repo_dir" >> $task
+echo "git checkout $rev" >> $task
+
+# command
+echo "$cmd" >> $task
+
+chmod u+x $task
+./$task
+exit $?
