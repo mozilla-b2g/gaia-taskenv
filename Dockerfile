@@ -14,9 +14,10 @@ run apt-get -y install git-core \
 run useradd tester --create-home
 user tester
 workdir /home/tester
-run wget https://raw.github.com/isaacs/nave/master/nave.sh
-run chmod u+x nave.sh
-run BASH=1 SHELL=bash /bin/bash nave.sh install stable
 
-# start in the nave subshell
-entrypoint ["/home/tester/nave.sh", "use", "stable"]
+# get node ready
+env PATH /home/tester/.n/bin:$PATH
+env N_PREFIX /home/tester/.n/
+run wget https://raw.github.com/visionmedia/n/master/bin/n
+run chmod u+x n
+run ./n 0.10.24
