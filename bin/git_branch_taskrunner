@@ -5,14 +5,14 @@
 
 task="run_task.sh"
 
-
 # git url (https://github.com/...)
 repo=$1
 # revision (like master)
 rev=$2
 repo_dir='git_checkout';
-# command to run in repo... this must be one (and only one argv option right now)
-cmd=$3
+# rest args take everything else and pass its as the cmd
+cmd=${@:3:999}
+echo $cmd
 
 # mostly so we can re-run tasks manually
 rm -f $task

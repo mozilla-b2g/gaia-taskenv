@@ -1,5 +1,5 @@
 from ubuntu
-maintainer James Lal <james@lightsofapollo.com
+maintainer James Lal <james@lightsofapollo.com>
 
 # start by installing all our ubuntu packages
 run apt-get -y update
@@ -22,6 +22,7 @@ env N_PREFIX /home/tester/.n/
 run mkdir bin/ && curl https://raw.github.com/visionmedia/n/master/bin/n > bin/n
 run chmod u+x bin/n
 run n 0.10.24
+add ./bin/git_branch_taskrunner /home/tester/bin/git_branch_taskrunner
 add ./entrypoint /entrypoint
-run chmod u+x /entrypoint
+run chmod u+x /entrypoint /home/tester/bin/git_branch_taskrunner
 entrypoint ["/entrypoint"]
