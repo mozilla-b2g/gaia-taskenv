@@ -25,9 +25,6 @@ you now have a lightsofapollo/gaia-testenv container. Pass DOCKER_TAG environmen
 
 ## Testing
 
-Right now the testing situation is a little messy.
-From the _host_ (which needs to have node right now)
-
 ### Script unit tests
 
 The unit tests are written in node and test the generator scripts
@@ -47,5 +44,3 @@ vagrant ssh
 cd /vagrant
 make test-docker
 ```
-
-This will do an end-to-end test inside of the vm.
