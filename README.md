@@ -5,7 +5,7 @@ along with the source code that needs to run on it. With docker we can
 get very very close (though limited to linux right now).
 
 The goal here is to provide a very simple base docker image for use in
-testing with the docker test host and gaia (firefox os).
+testing with the [docker test host](https://github.com/taskcluster/docker-taskhost) and [gaia](https://github.com/mozilla-b2g/gaia) (firefox os).
 
 
 # Development
