@@ -2,7 +2,7 @@
 
 # must run from a docker enabled host
 docker run lightsofapollo/gaia-taskenv \
-           git_branch_taskrunner \
+           ./bin/git_branch_taskrunner \
            https://github.com/taskcluster/gaia-taskenv.git \
            master 'exit 222'
 
