@@ -1,4 +1,4 @@
-from ubuntu
+from lightsofapollo/node:0.10.24
 maintainer James Lal <james@lightsofapollo.com>
 
 # start by installing all our ubuntu packages
@@ -13,16 +13,12 @@ run apt-get -y install git-core \
 # Then add our non-root user
 env HOME /home/tester
 run useradd tester --create-home
-user tester
 workdir /home/tester
 
 # get node ready
-env PATH /home/tester/bin:/home/tester/.n/bin:$PATH
-env N_PREFIX /home/tester/.n/
-run mkdir bin/ && curl https://raw.github.com/visionmedia/n/master/bin/n > bin/n
-run chmod u+x bin/n
-run n 0.10.24
 add ./bin/git_branch_taskrunner /home/tester/bin/git_branch_taskrunner
 add ./entrypoint /entrypoint
-run chmod u+x /entrypoint /home/tester/bin/git_branch_taskrunner
+run chmod u+x /entrypoint
+run chmod u+x /home/tester/bin/git_branch_taskrunner
+user tester
 entrypoint ["/entrypoint"]
