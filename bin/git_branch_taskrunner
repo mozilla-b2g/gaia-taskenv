@@ -1,7 +1,4 @@
-#! /bin/bash -e
-
-export DISPLAY=:99
-Xvfb :99 > /dev/null 2>&1 &
+#! /bin/bash -ve
 
 # $1 == repo url
 # $2 == repo revision

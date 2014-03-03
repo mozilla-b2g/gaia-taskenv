@@ -5,9 +5,8 @@ default: test docker_image
 node_modules: package.json
 	npm install
 
-
 .PHONY: test
-test: node_modules
+test: node_modules test-docker
 	./node_modules/.bin/mocha $(wildcard bin/*_test.js)
 
 .PHONY: test-docker
