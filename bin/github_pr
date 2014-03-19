@@ -1,4 +1,4 @@
-#! /bin/bash -ve
+#! /bin/bash -vex
 
 # $1 == repo url
 # $2 == repo revision
@@ -6,8 +6,8 @@ task="run_task.sh"
 
 # git url (https://github.com/...)
 repo=$1
-# revision (like master)
-rev=$2
+# the pull request number
+pr_number=$2
 repo_dir='git_checkout';
 # rest args take everything else and pass its as the cmd
 cmd=${@:3:999}
@@ -15,12 +15,11 @@ echo $cmd
 
 # mostly so we can re-run tasks manually
 rm -f $task
-rm -Rf $repo_dir;
 
 echo "#! /bin/bash -ve" >> $task
-echo "git clone --depth=1 $repo $repo_dir" >> $task
 echo "cd $repo_dir" >> $task
-echo "git checkout $rev" >> $task
+echo "git fetch --depth 1 origin +refs/pull/$pr_number/merge" >> $task
+echo "git checkout -qf FETCH_HEAD" >> $task
 
 # command
 echo "$cmd" >> $task
