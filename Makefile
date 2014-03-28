@@ -1,18 +1,12 @@
+DOCKER_REPO?=
 DOCKER_TAG?=lightsofapollo/gaia-taskenv
+VERSION?=$(shell cat VERSION)
 
-default: test docker_image
-
-node_modules: package.json
-	npm install
-
-.PHONY: test
-test: node_modules test-docker
-	./node_modules/.bin/mocha $(wildcard bin/*_test.js)
-
-.PHONY: test-docker
-test-docker: docker_image
-	test/docker_test.sh
+default: docker_image
 
 .PHONY: docker_image
 docker_image:
-	docker build -t $(DOCKER_TAG) .
+	docker build -t $(DOCKER_REPO)$(DOCKER_TAG):$(VERSION) .
+
+.PHONY: register
+register: docker_image
