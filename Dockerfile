@@ -14,9 +14,7 @@ workdir /home/tester
 run git clone http://github.com/mozilla-b2g/gaia.git /home/tester/git_checkout/
 
 # get node ready
-add ./bin/github /home/tester/bin/github
 add ./bin/entrypoint /home/tester/bin/entrypoint
-run chmod u+x ./bin/github
 run chmod a+x ./bin/entrypoint
 # this entrypoint is bash with Xvfb running by default
 entrypoint ["/home/tester/bin/entrypoint"]
