@@ -5,6 +5,10 @@ Xvfb :99 > /dev/null 2>&1 &
 
 checkout_path="$PWD/git_checkout"
 
+# virtualenv setup so any python packages can be abused without root access
+virtualenv $HOME/.venv
+. $HOME/.venv/bin/activate
+
 # move to the cached repo checkout
 cd $checkout_path
 
