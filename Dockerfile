@@ -1,4 +1,4 @@
-from lightsofapollo/node:0.10.26
+from lightsofapollo/ubuntu-node:latest
 maintainer James Lal <james@lightsofapollo.com>
 
 # start by installing all our ubuntu packages
